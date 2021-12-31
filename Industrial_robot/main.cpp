@@ -61,7 +61,7 @@ void findSquares(const Mat& image,Mat &out)
             {
                 //检测边缘
                 Canny(gray_one, gray, 5, thresh, 5);
-                //膨脹
+                //膨胀
                 dilate(gray, gray, Mat(), Point(-1, -1));
                 imshow("dilate", gray);
             }
@@ -120,7 +120,7 @@ void findSquares(const Mat& image,Mat &out)
 }
 
 int main(int argc, const char * argv[]) {
-    Mat src = imread("scene2.jpg", 1);
+    Mat src = imread("in.jpg", 1);
     Mat out = src.clone();
     findSquares(src, out);
     return 0;
