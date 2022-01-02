@@ -7,6 +7,7 @@
 
 #include<opencv2/opencv.hpp>
 #include<iostream>
+#include<fstream>
 #include<cmath>
 #include<ctime>
 #include<vector>
@@ -63,7 +64,7 @@ void findSquares(const Mat& image,Mat &out)
                 Canny(gray_one, gray, 5, thresh, 5);
                 //膨胀
                 dilate(gray, gray, Mat(), Point(-1, -1));
-                imshow("dilate", gray);
+                //imshow("dilate", gray);
             }
             else
             {
@@ -116,10 +117,87 @@ void findSquares(const Mat& image,Mat &out)
     }
 //    imshow("out",out);
 //    waitKey(0);
+//    imwrite("out.jpg",out);
+    
+    int processed_num = 0;
+    int processed_x = 0;
+    int processed_y = 0;
+    //遍历所有矩形
+    for(size_t i = 0; i < squares.size(); i++)
+    {
+        bool flag_out = 1;
+        //遍历每个矩形的所有点
+        for(size_t j = 0; j < squares[i].size(); j++)
+        {
+            Point* p = &squares[i][j];
+            //过滤边缘无效矩形
+            if (p->x < 3 || p->y < 3) flag_out = 0;
+        }
+        if(flag_out == 0) continue;
+        //统计中心点信息
+        for(size_t j = 0; j < squares[i].size(); j++)
+        {
+            processed_num += 1;
+            Point* p = &squares[i][j];
+            processed_x += p->x;
+            processed_y += p->y;
+//            cout << p->x << endl;
+//            cout << p->y << endl;
+//            cout << endl;
+        }
+    }
+    processed_x/= processed_num;
+    processed_y/= processed_num;
+//    cout << processed_x << endl;
+//    cout << processed_y << endl;
+//    cout << out.rows << endl;
+//    cout << out.cols << endl;
+    circle(out, Point(processed_x, processed_y), 10, Scalar(0, 255, 0), -1);
     imwrite("out.jpg",out);
+    
+    ofstream OutFile("pos.txt");
+    if(processed_x < out.cols/3) OutFile << 10;
+    else if(processed_x > out.cols*2/3) OutFile << 12;
+    else OutFile << 11;
+    OutFile.close();
+}
+
+//打开摄像头拍照
+void process()
+{
+    VideoCapture capture(0);//读取
+    if (!capture.isOpened())
+    {
+        cerr << "No camera detected.\n";
+        return;
+    }
+    Mat frame;
+    char filename[20];
+    for (;;)
+    {
+        capture >> frame;
+        if (frame.empty())
+            break;
+        imshow("camera_1", frame);
+        char key = (char)waitKey(30);//每显示一帧数据的时候停30ms，检测是否按下按键
+        switch (key)
+        {
+        case 27: // Esc键，退出拍照
+            return;
+        case ' ':// 空格键，保存信息
+            sprintf(filename, "in.jpg");
+            imwrite(filename, frame);
+            cout << "Saved " << filename << endl;
+            return;
+        default:
+            break;
+        }
+    }
+    return;
 }
 
 int main(int argc, const char * argv[]) {
+    process();
     Mat src = imread("in.jpg", 1);
     Mat out = src.clone();
     findSquares(src, out);
