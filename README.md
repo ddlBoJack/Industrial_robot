@@ -14,9 +14,9 @@
 
 安川机械臂MOTOMAN-GP25，是一台6轴垂直多关节型机械臂。 通过丰富的功能和核心组件,可满足散装零件抓取、嵌装、组装、打磨、加工等广泛需求。机械臂既可以通过PC编程，也可以通过示教器编程。
 
-<img src="README/E992E43C-E709-4D5F-ABA1-8EB46B5DC82A.png" style="zoom: 25%;" />
+<img src="README/E992E43C-E709-4D5F-ABA1-8EB46B5DC82A.png" width="300px">
 
-<img src="README/5E237779-A1E7-453F-8B45-3FE68F11698F.png" alt="5E237779-A1E7-453F-8B45-3FE68F11698F" style="zoom: 25%;" />
+<img src="README/5E237779-A1E7-453F-8B45-3FE68F11698F.png" width="300px">
 
 
 
