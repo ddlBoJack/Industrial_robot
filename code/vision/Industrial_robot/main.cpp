@@ -155,11 +155,11 @@ void findSquares(const Mat& image,Mat &out)
     circle(out, Point(processed_x, processed_y), 10, Scalar(0, 255, 0), -1);
     imwrite("out.jpg",out);
     
-    ofstream OutFile("pos.txt");
-    if(processed_x < out.cols/3) OutFile << 10;
-    else if(processed_x > out.cols*2/3) OutFile << 12;
-    else OutFile << 11;
-    OutFile.close();
+    // ofstream OutFile("pos.txt");
+    // if(processed_x < out.cols/3) OutFile << 10;
+    // else if(processed_x > out.cols*2/3) OutFile << 12;
+    // else OutFile << 11;
+    // OutFile.close();
 }
 
 //打开摄像头拍照
