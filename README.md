@@ -2,6 +2,8 @@
 
 ![demo](README/demo.gif)
 
+
+
 ## 项目介绍
 
 ### 项目内容
@@ -12,13 +14,7 @@
 
 安川机械臂MOTOMAN-GP25，是一台6轴垂直多关节型机械臂。 通过丰富的功能和核心组件,可满足散装零件抓取、嵌装、组装、打磨、加工等广泛需求。机械臂既可以通过PC编程，也可以通过示教器编程。
 
-<img src="README/E992E43C-E709-4D5F-ABA1-8EB46B5DC82A.png" alt="E992E43C-E709-4D5F-ABA1-8EB46B5DC82A" style="zoom: 25%;" />
-
-
-
-<center><font color=grey>安川机械臂MOTOMAN-GP25</font></center>
-
-
+<img src="README/E992E43C-E709-4D5F-ABA1-8EB46B5DC82A.png" style="zoom: 25%;" />
 
 <img src="README/5E237779-A1E7-453F-8B45-3FE68F11698F.png" alt="5E237779-A1E7-453F-8B45-3FE68F11698F" style="zoom: 25%;" />
 
@@ -44,8 +40,6 @@
 
 <img src="README/out.jpg" alt="out" style="zoom: 25%;" />
 
-
-
 ### 通讯模块
 
 > 代码位置：/code/control
@@ -68,8 +62,6 @@
 3. 对于PC端（server端），为了方便我们使用socket通信软件（NetAssist）直接进行通信，软件界面如下：
 
    <img src="README/image-20220112210407311.png" alt="image-20220112210407311" style="zoom: 25%;" />
-
-   
 
 ### 控制模块
 
@@ -116,9 +108,3 @@ END
 
 
 由此，整个视觉模块—通讯模块—控制模块联动，物流分拣功能的系统就完成了。
-
-
-
-## 实验心得
-
-在以往的项目中，我们基本只关注某一方面的理论和应用，同时停留在理论证明和软件模拟验证。在这种情况的象牙塔中，各种因素都十分理想，然而实际情况并不会如此。在这个项目中，我们第一次将所学知识应用到真真实实的工业场景中，将不同模块串成一个可用的系统。通过这个项目我们极大地提升了工程编码能力、底层系统能力、复杂工程架构能力、异常情况应对能力。
